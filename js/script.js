@@ -33,3 +33,28 @@ sidebarClose.forEach(close => {
 		sidebar.classList.add("hidden")
 	})
 })
+
+// ACCORDION 
+const accordions = document.querySelectorAll("[data-js='accordion']")
+
+accordions.forEach(accordion => {
+	const accordionToggler = accordion.querySelector("[data-js='accordion-toggler']")
+	const accordionContent = accordion.querySelector("[data-js='accordion-content']")
+
+	const openAccordionIcon = accordion.querySelector("[data-js='open-accordion-icon']")
+	const closeAccordionIcon = accordion.querySelector("[data-js='close-accordion-icon']")
+
+	accordionToggler.addEventListener("click", () => {
+		 if(accordionContent.classList.contains("hidden")) {
+				openAccordionIcon.classList.add("hidden")
+				closeAccordionIcon.classList.remove("hidden")
+
+				return accordionContent.classList.remove("hidden")
+		 }
+
+		 accordionContent.classList.add("hidden")
+
+		 closeAccordionIcon.classList.add("hidden")
+		 openAccordionIcon.classList.remove("hidden")
+	})
+})

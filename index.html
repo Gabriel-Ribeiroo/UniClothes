@@ -50,14 +50,40 @@
 	<div class="layout">
 		<aside id="sidebar" class="hidden" data-js="sidebar">	
 			<div class="sidebar__container">
-				<ul class="sidebar__categories-list">
-					<li>Camisetas</li>
-					<li>Blusas</li>
+				<div class="sidebar__accordion accordion" data-js="accordion">
+					<button class="sidebar__accordion-toggler" data-js="accordion-toggler">
+						Categorias 
+
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="open-accordion-icon" data-js="open-accordion-icon">
+							<path d="M5 12h14" />
+							<path d="M12 5v14" />
+						</svg>
+
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-accordion-icon hidden" data-js="close-accordion-icon">
+							<path d="M5 12h14" />
+						</svg>
+					</button>
+
+					<ul class="sidebar__accordion-content accordion-content hidden" aria-labelledby="sidebar-categories" data-js="accordion-content">
+						<li>Ver tudo</li>
+						<li>Camisetas</li>
+						<li>Camisas</li>
+						<li>Blusas</li>
+						<li>Calças</li>
+						<li>Tênis</li>
+					</ul>
+				</div>
+
+				<ul class="sidebar__categories-list" aria-labelledby="sidebar-categories">
+					<li>Sobre nós</li>
+					<li>Descontos</li>
 					<li>Calças</li>
 					<li>Tênis</li>
 				</ul>
 	
-				<button aria-label="Fechar Menu" data-js="sidebar-close" class="icon-button">
+				<button aria-label="Fechar Menu" data-js="sidebar-close" class="sidebar__close-button">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 						stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
 						<path d="M18 6 6 18" />

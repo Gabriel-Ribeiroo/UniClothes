@@ -1,18 +1,7 @@
-// THEME 
-const root = document.documentElement
+import { toggleTheme } from "./theme.js"
 
 const themeToggler = document.querySelector("[data-js='theme-toggler']")
-
-themeToggler.addEventListener("click", () => {
-	const currentTheme = root.getAttribute("data-theme") || 
-		(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : light)
-
-	const nextTheme = currentTheme === "dark" ? "light" : "dark"
-
-	root.setAttribute("data-theme", nextTheme)
-	localStorage.setItem("theme", nextTheme)
-})
-
+themeToggler.addEventListener("click", toggleTheme)
 
 // SIDEBAR 
 const sidebar = document.querySelector("[data-js='sidebar']")

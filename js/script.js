@@ -1,6 +1,7 @@
 import { toggleTheme } from "./theme.js"
 import { openSidebar, closeSidebar } from "./sidebar.js"
 import { accordionOpenClose } from "./accordion.js"
+import { incrementCartProductsQuantity } from "./cartCount.js"
 
 const themeToggler = document.querySelector("[data-js='theme-toggler']")
 themeToggler.addEventListener("click", toggleTheme)
@@ -27,24 +28,8 @@ accordions.forEach(accordion => {
 })
 
 // CART
-const cartBadge = document.querySelector("[data-js='cart-badge']")
 const addToCartButtons = document.querySelectorAll("[data-js='add-to-cart']")
 
-let cartCount = 0
-
 addToCartButtons.forEach(button => {
-	button.addEventListener("click", () => {
-		cartCount++
-
-		cartBadge.textContent = cartCount
-		cartBadge.classList.remove("hidden")
-		cartBadge.classList.remove("bump")
-		
-		requestAnimationFrame(() => {
-			cartBadge.classList.add("bump")
-		})
-
-		const productName = button.closest("[data-js='product-item']").querySelector("h3").textContent.trim()
-		showCartToast(productName)
-	})
+	button.addEventListener("click", () => incrementCartProductsQuantity(button))
 })

@@ -120,6 +120,15 @@
 	}
 }
 
-.accordion-content.hidden {
-	display: none; 
+.accordion-content {
+	overflow: hidden;
+	transition: height 1s ease;
+
+	&.hidden {
+		height: 0;
+	}
+}
+
+.accordion-content > :first-child {
+	padding-top: .875rem; 
 }

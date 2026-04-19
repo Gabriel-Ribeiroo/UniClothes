@@ -13,13 +13,13 @@ themeToggler.addEventListener("click", () => {
 	localStorage.setItem("theme", nextTheme)
 })
 
+
 // SIDEBAR 
 const sidebar = document.querySelector("[data-js='sidebar']")
 
 const sidebarOpen = document.querySelector("[data-js='sidebar-open']")
 
 sidebarOpen.addEventListener("click", () => {
-
 	if (sidebar.classList.contains("hidden")) {
 		sidebar.classList.remove("hidden")
 	}
@@ -34,6 +34,7 @@ sidebarClose.forEach(close => {
 	})
 })
 
+
 // ACCORDION
 const accordions = document.querySelectorAll("[data-js='accordion']")
 
@@ -41,24 +42,35 @@ accordions.forEach(accordion => {
 	const accordionToggler = accordion.querySelector("[data-js='accordion-toggler']")
 	const accordionContent = accordion.querySelector("[data-js='accordion-content']")
 
+	accordionContent.style.height = "0px"
+
 	const openAccordionIcon = accordion.querySelector("[data-js='open-accordion-icon']")
 	const closeAccordionIcon = accordion.querySelector("[data-js='close-accordion-icon']")
 
 	accordionToggler.addEventListener("click", () => {
-		 if(accordionContent.classList.contains("hidden")) {
-				openAccordionIcon.classList.add("hidden")
-				closeAccordionIcon.classList.remove("hidden")
+		if(accordionContent.classList.contains("hidden")) {
+			openAccordionIcon.classList.add("hidden")
+			closeAccordionIcon.classList.remove("hidden")
 
-				return accordionContent.classList.remove("hidden")
-		 }
+			accordionContent.classList.remove("hidden")
 
-		 accordionContent.classList.add("hidden")
+			accordionContent.style.height = "0px"
 
-		 closeAccordionIcon.classList.add("hidden")
-		 openAccordionIcon.classList.remove("hidden")
+			return requestAnimationFrame(() => {
+				accordionContent.style.height = accordionContent.scrollHeight + "px"
+			})
+		}
+
+		accordionContent.style.height = "0px"
+		
+		closeAccordionIcon.classList.add("hidden")
+		openAccordionIcon.classList.remove("hidden")
+
+		accordionContent.addEventListener("transitionend", () => {
+			if(accordionContent.style.height === "0px") accordionContent.classList.add("hidden")
+		}, { once: true })
 	})
 })
-
 
 // CART
 const cartBadge = document.querySelector("[data-js='cart-badge']")

@@ -120,6 +120,10 @@
 	}
 }
 
+.accordion-toggler {
+	cursor: pointer;  
+}
+
 .accordion-content {
 	overflow: hidden;
 	transition: height 300ms ease;
